@@ -1,0 +1,167 @@
+// Default breakpoints from Frontend
+$mq-breakpoints: (
+    mobile:          320px,
+    mobileLandscape: 480px,
+    phablet:         660px,
+    tablet:          740px,
+    desktop:         980px,
+    leftCol:         1140px,
+    wide:            1300px
+);
+
+@import 'shared/_imports';
+@import 'swiper';
+
+section#brexit-shorts {
+    .fc-item {
+        padding: 0;
+    }
+}
+
+.brexit-shorts-thrasher {
+    border-top: 2px solid #fb0;
+    background-color: #333;
+    font-family: 'Guardian Egyptian Web', 'Guardian Egyptian Text Web', Georgia;
+    .header {
+        min-height: 60px;
+        position: relative;
+        &__brexit-logo {
+            position: absolute;
+            top: 9px;
+            left: 10px;
+            img {
+                width: 69px;
+                height: 40px;
+            }
+        }
+        &__text {
+            padding-top: 9px;
+            padding-left: 91px;
+            padding-bottom: 12px;
+            h1, h2 {
+                color: #fb0;
+                font-weight: 700;
+                margin: 0;
+                padding: 0;
+                line-height: 1em;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+        }
+    }
+    .films {
+        // border: 1px solid tomato;
+        width: 100%;
+        .swiper-wrapper {
+            padding-bottom: 48px;
+        }
+        .card {
+            width: calc(100% - 70px);
+            position: relative;
+            overflow: hidden;
+            @include mq(mobileLandscape) {
+                width: 340px;
+            }
+            &.first {
+                margin-left: -50px;
+                @include mq(mobileLandscape) {
+                    margin-left: 0;
+                }
+            }
+            .link {
+
+            }
+            .background {
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 50%;
+                    background-color: tomato;
+                    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.4+100 */
+                    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
+                }
+                img {
+                    width: 100%;
+                    display: block;
+                }
+            }
+            .foreground {
+                position: absolute;
+                bottom: 0;
+                left: -1px;
+                right: -1px;
+                padding: 6px 9px;
+                color: #fff;
+                opacity: 0.9;
+                transition: all 440ms;
+                .play-button {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 100%;
+                    display: block;
+                    margin-bottom: 6px;
+                    margin-left: -1px;
+                    position: relative;
+                    background-color: #fb0;
+                    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="21"><path fill="#333" fill-rule="evenodd" d="M24.2 11.07v-1.02L1.5.67l-.83.65V19.8l.83.58"/></svg>');
+                    background-position: 13.5px 14px;
+                    background-size: 25px 21px;
+                    background-repeat: no-repeat;
+                    opacity: 0;
+                    transform: scale(0.85);
+                    transition: all 400ms;
+                }
+                .title {
+                    font-weight: 800;
+                    font-size: 28px;
+                    line-height: 28px;
+                    margin-bottom: 1px;
+                }
+                .people {
+                    font-size: 14px;
+                    line-height: 18px;
+                    font-family: 'Guardian Text Sans Web';
+                    opacity: 0.9;
+                }
+            }
+            &.swiper-slide-active {
+                .foreground {
+                    opacity: 1;
+                    transform: translateY(0);
+                    .play-button {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+        .swiper-pagination {
+            bottom: 18px;
+            .swiper-pagination-bullet {
+                background-color: #DCDCDC;
+                width: 6px;
+                height: 6px;
+                vertical-align: middle;
+                margin: 0 3px;
+                opacity: 1;
+            }
+            .swiper-pagination-bullet-active {
+                background-color: #FB0;
+                width: 10px;
+                height: 10px;
+            }
+        }
+    }
+}
