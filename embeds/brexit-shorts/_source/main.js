@@ -27,6 +27,7 @@ return this.length>0?e?this[0].offsetWidth+parseFloat(this.css("margin-right"))+
 
     function setup() {
         if (window.innerWidth>740) {
+            load_desktop_images();
             if (mySwiper==false) {
                 // was not in mobile
             } else {
@@ -44,9 +45,28 @@ return this.length>0?e?this[0].offsetWidth+parseFloat(this.css("margin-right"))+
                     slidesPerView: 'auto',
                     resistance: false
                 });
+                load_mobile_images();
             } else {
-                // second mobile setup, destroy desktop?
+                load_mobile_images();
             }
+        }
+    }
+    function load_mobile_images() {
+        var images = document.querySelectorAll('img.mob-load[data-src]');
+        for (var j = 0; j < images.length; j++) {
+            var image = images[j];
+            image.setAttribute('srcset', image.getAttribute('data-srcset'));
+            image.setAttribute('src', image.getAttribute('data-src'));
+
+        }
+    }
+    function load_desktop_images() {
+        var images = document.querySelectorAll('.card:nth-child(1) img.dsk-load.large[data-src], .card:nth-child(2) img.dsk-load.small[data-src], .card:nth-child(3) img.dsk-load.small[data-src]');
+        for (var j = 0; j < images.length; j++) {
+            var image = images[j];
+            image.setAttribute('srcset', image.getAttribute('data-srcset'));
+            image.setAttribute('src', image.getAttribute('data-src'));
+            console.log(image);
         }
     }
 }());

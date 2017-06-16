@@ -22,9 +22,32 @@ section#brexit-shorts {
     border-top: 2px solid #fb0;
     background-color: #333;
     font-family: 'Guardian Egyptian Web', 'Guardian Egyptian Text Web', Georgia;
+    @include mq(tablet) {
+        width: 740px;
+        padding-bottom: 18px;
+    }
+    @include mq(desktop) {
+        width: 980px;
+        padding-bottom: 24px;
+    }
+    @include mq(leftCol) {
+        width: 1140px;
+    }
+    @include mq(wide) {
+        width: 1300px;
+    }
     .header {
         min-height: 60px;
         position: relative;
+        @include mq(tablet) {
+            margin-left: 10px;
+        }
+        @include mq(leftCol) {
+            position: absolute;
+            top: 0;
+            left: 2px;
+        }
+
         &__brexit-logo {
             position: absolute;
             top: 9px;
@@ -38,6 +61,14 @@ section#brexit-shorts {
             padding-top: 9px;
             padding-left: 91px;
             padding-bottom: 12px;
+            @include mq(leftCol) {
+                padding-left: 10px;
+                padding-top: 57px;
+                width: 140px;
+            }
+            @include mq(wide) {
+                width: 220px;
+            }
             h1, h2 {
                 color: #fb0;
                 font-weight: 700;
@@ -47,6 +78,9 @@ section#brexit-shorts {
             }
             h1 {
                 font-size: 24px;
+                @include mq(leftCol) {
+                    margin-bottom: 3px;
+                }
             }
             h2 {
                 font-size: 18px;
@@ -56,8 +90,56 @@ section#brexit-shorts {
     .films {
         // border: 1px solid tomato;
         width: 100%;
+        position: relative;
+        @include mq(tablet) {
+            height: 293px;
+        }
+        @include mq(leftCol) {
+            padding-top: 12px;
+        }
         .swiper-wrapper {
             padding-bottom: 48px;
+            @include mq(tablet) {
+                padding: 0;
+                &:before,
+                &:after {
+                    position: absolute;
+                    top: 0;
+                    left: 560px;
+                }
+                &:before {
+                    content: '';
+                    width: 60px;
+                    height: 1px;
+                    background-color: #fb0;
+                    opacity: 0.8;
+                }
+                &:after {
+                    content: 'more brexit shorts';
+                    font-family: 'Guardian Text Sans Web', 'Guardian Sans Web', Helvetica, Arial, sans-serif;
+                    line-height: 24px;
+                    font-size: 16px;
+                    color: #f6f6f6;
+                }
+            }
+            @include mq(desktop) {
+                &:before,
+                &:after {
+                    left: 740px;
+                }
+            }
+            @include mq(leftCol) {
+                &:before,
+                &:after {
+                    left: 900px;
+                }
+            }
+            @include mq(wide) {
+                &:before,
+                &:after {
+                    left: 980px;
+                }
+            }
         }
         .card {
             width: calc(100% - 70px);
@@ -66,6 +148,98 @@ section#brexit-shorts {
             @include mq(mobileLandscape) {
                 width: 340px;
             }
+            @include mq(tablet) {
+                display: none;
+
+                &:nth-child(1) {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 20px;
+                    width: 520px;
+                    height: 293px;
+                    .foreground {
+                        .play-button {
+                            transform: scale(1.125);
+                        }
+                        .title {
+                            font-size: 36px;
+                            line-height: 38px;
+                            padding-top: 3px;
+                        }
+                        .people {
+                            font-size: 16px;
+                            line-height: 18px;
+                        }
+                    }
+                }
+
+                &:nth-child(2),
+                &:nth-child(3) {
+                    display: block;
+                    position: absolute;
+                    width: 160px;
+                    height: 124px;
+                    left: 560px;
+                    .foreground {
+                        .play-button {
+                            transform-origin: bottom left;
+                            transform: scale(0.5);
+                        }
+                        .title {
+                            font-size: 18px;
+                            line-height: 18px;
+                        }
+                        .people {
+                            display: none;
+                        }
+                    }
+                    .background {
+                        img.small {
+                            height: 124px;
+                            width: auto;
+                        }
+                    }
+                }
+
+                &:nth-child(2) {
+                    top: 32px;
+                }
+                &:nth-child(3) {
+                    top: 172px;
+                }
+            }
+            @include mq(desktop) {
+                &:nth-child(1) {
+                    width: 700px;
+                    img.large {
+                        transform: translateY(-24px);
+                    }
+                }
+                &:nth-child(2),
+                &:nth-child(3) {
+                    left: 740px;
+                    width: 220px;
+                }
+            }
+            @include mq(leftCol) {
+                &:nth-child(1) {
+                    left: 180px;
+                }
+                &:nth-child(2),
+                &:nth-child(3) {
+                    left: 900px;
+                }
+            }
+            @include mq(wide) {
+                &:nth-child(1) {
+                    left: 260px;
+                }
+                &:nth-child(2),
+                &:nth-child(3) {
+                    left: 980px;
+                }
+            }
             &.first {
                 margin-left: -50px;
                 @include mq(mobileLandscape) {
@@ -73,7 +247,18 @@ section#brexit-shorts {
                 }
             }
             .link {
-
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 3;
+                &:hover {
+                    &+.background,
+                    &~.foreground {
+                        opacity: 0.8;
+                    }
+                }
             }
             .background {
                 position: relative;
@@ -94,7 +279,20 @@ section#brexit-shorts {
                 }
                 img {
                     width: 100%;
-                    display: block;
+                    display: none;
+                    &.mob-load {
+                        display: block;
+                    }
+                    @include mq(tablet) {
+                        &.mob-load {
+                            display: none;
+                        }
+                        &.dsk-load {
+                            display: block;
+                            height: 100%;
+                            width: auto;
+                        }
+                    }
                 }
             }
             .foreground {
@@ -115,13 +313,17 @@ section#brexit-shorts {
                     margin-left: -1px;
                     position: relative;
                     background-color: #fb0;
-                    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="21"><path fill="#333" fill-rule="evenodd" d="M24.2 11.07v-1.02L1.5.67l-.83.65V19.8l.83.58"/></svg>');
+                    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2225%22%20height%3D%2221%22%3E%3Cpath%20fill%3D%22%23333%22%20fill-rule%3D%22evenodd%22%20d%3D%22M24.2%2011.07v-1.02L1.5.67l-.83.65V19.8l.83.58%22%2F%3E%3C%2Fsvg%3E');
                     background-position: 13.5px 14px;
                     background-size: 25px 21px;
                     background-repeat: no-repeat;
                     opacity: 0;
                     transform: scale(0.85);
                     transition: all 400ms;
+                    @include mq(tablet) {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
                 }
                 .title {
                     font-weight: 800;
@@ -132,7 +334,7 @@ section#brexit-shorts {
                 .people {
                     font-size: 14px;
                     line-height: 18px;
-                    font-family: 'Guardian Text Sans Web';
+                    font-family: 'Guardian Text Sans Web', 'Guardian Sans Web', Helvetica, Arial, sans-serif;
                     opacity: 0.9;
                 }
             }
@@ -149,6 +351,9 @@ section#brexit-shorts {
         }
         .swiper-pagination {
             bottom: 18px;
+            @include mq(tablet) {
+                display: none;
+            }
             .swiper-pagination-bullet {
                 background-color: #DCDCDC;
                 width: 6px;
