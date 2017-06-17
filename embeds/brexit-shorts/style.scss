@@ -213,7 +213,7 @@ section#brexit-shorts {
                 &:nth-child(1) {
                     width: 700px;
                     img.large {
-                        transform: translateY(-24px);
+                        transform: translateY(-12px);
                     }
                 }
                 &:nth-child(2),
@@ -253,10 +253,12 @@ section#brexit-shorts {
                 right: 0;
                 bottom: 0;
                 z-index: 3;
-                &:hover {
-                    &+.background,
-                    &~.foreground {
-                        opacity: 0.8;
+                @include mq(tablet) {
+                    &:hover {
+                        &+.background,
+                        &~.foreground {
+                            opacity: 0.8;
+                        }
                     }
                 }
             }
@@ -291,6 +293,10 @@ section#brexit-shorts {
                             display: block;
                             height: 100%;
                             width: auto;
+                        }
+                        &.dsk-load.large {
+                            width: 100%;
+                            height: auto;
                         }
                     }
                 }
@@ -367,6 +373,22 @@ section#brexit-shorts {
                 width: 10px;
                 height: 10px;
             }
+        }
+    }
+    .mob-load {
+        display: block;
+    }
+    .dsk-load {
+        display: none;
+    }
+    @include mq(tablet) {
+        .mob-load {
+            display: none;
+        }
+        .dsk-load {
+            display: block;
+            height: 100%;
+            width: auto;
         }
     }
 }
