@@ -30,11 +30,13 @@ section#brexit-shorts {
         width: 980px;
         padding-bottom: 24px;
     }
-    @include mq(leftCol) {
+    @include mq($from:leftCol, $until:wide) {
         width: 1140px;
     }
     @include mq(wide) {
-        width: 1300px;
+        body:not(.has-page-skin) & {
+            width: 1300px;
+        }
     }
     .header {
         min-height: 60px;
@@ -42,10 +44,18 @@ section#brexit-shorts {
         @include mq(tablet) {
             margin-left: 10px;
         }
-        @include mq(leftCol) {
+
+        @include mq($from:leftCol, $until:wide) {
             position: absolute;
             top: 0;
             left: 2px;
+        }
+        @include mq(wide) {
+            body:not(.has-page-skin) & {
+                position: absolute;
+                top: 0;
+                left: 2px;
+            }
         }
 
         &__brexit-logo {
@@ -58,16 +68,31 @@ section#brexit-shorts {
             }
         }
         &__text {
+            position: relative;
+            z-index: 6;
+            display: block;
             padding-top: 9px;
             padding-left: 91px;
             padding-bottom: 12px;
-            @include mq(leftCol) {
+            &:hover {
+                h1 {
+                    text-decoration: underline;
+                }
+                h2 {
+                    text-decoration: none;
+                }
+            }
+            @include mq($from:leftCol, $until:wide) {
                 padding-left: 10px;
                 padding-top: 57px;
                 width: 140px;
             }
             @include mq(wide) {
-                width: 220px;
+                body:not(.has-page-skin) & {
+                    padding-left: 10px;
+                    padding-top: 57px;
+                    width: 220px;
+                }
             }
             h1, h2 {
                 color: #fb0;
@@ -78,8 +103,13 @@ section#brexit-shorts {
             }
             h1 {
                 font-size: 24px;
-                @include mq(leftCol) {
+                @include mq($from:leftCol, $until:wide) {
                     margin-bottom: 3px;
+                }
+                @include mq(wide) {
+                    body:not(.has-page-skin) & {
+                        margin-bottom: 3px;
+                    }
                 }
             }
             h2 {
@@ -88,14 +118,18 @@ section#brexit-shorts {
         }
     }
     .films {
-        // border: 1px solid tomato;
         width: 100%;
         position: relative;
         @include mq(tablet) {
             height: 293px;
         }
-        @include mq(leftCol) {
+        @include mq($from:leftCol, $until:wide) {
             padding-top: 12px;
+        }
+        @include mq(wide) {
+            body:not(.has-page-skin) & {
+                padding-top: 12px;
+            }
         }
         .swiper-wrapper {
             padding-bottom: 48px;
@@ -128,16 +162,18 @@ section#brexit-shorts {
                     left: 740px;
                 }
             }
-            @include mq(leftCol) {
+            @include mq($from:leftCol, $until:wide) {
                 &:before,
                 &:after {
                     left: 900px;
                 }
             }
             @include mq(wide) {
-                &:before,
-                &:after {
-                    left: 980px;
+                body:not(.has-page-skin) & {
+                    &:before,
+                    &:after {
+                        left: 980px;
+                    }
                 }
             }
         }
@@ -222,7 +258,7 @@ section#brexit-shorts {
                     width: 220px;
                 }
             }
-            @include mq(leftCol) {
+            @include mq($from:leftCol, $until:wide) {
                 &:nth-child(1) {
                     left: 180px;
                 }
@@ -232,12 +268,14 @@ section#brexit-shorts {
                 }
             }
             @include mq(wide) {
-                &:nth-child(1) {
-                    left: 260px;
-                }
-                &:nth-child(2),
-                &:nth-child(3) {
-                    left: 980px;
+                body:not(.has-page-skin) & {
+                    &:nth-child(1) {
+                        left: 260px;
+                    }
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        left: 980px;
+                    }
                 }
             }
             &.first {
